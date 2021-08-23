@@ -4,6 +4,7 @@
 	.background_image {
 		background-image: url("{% static 'images/about.jpg' %}")
 	}
+
 </style>
 
 <!DOCTYPE html>
@@ -44,7 +45,18 @@
 											<li><a href="{% url 'contact' %}">Contact</a></li>
 										</ul>
 									</nav>
-									<div class="auth">Call us: 00-56 445 678 33</div>
+									{% if user.is_authenticated %}
+									<div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
+									{% else %}
+									<div class="header_phone ml-auto"><a href="#" class="home_search_button" style="
+										padding-top: 10px;
+										padding-bottom: 10px;
+										padding-left: 30px;
+										padding-right: 30px;
+										text-decoration: none;
+										color: white;
+									">Sign in</a></div>
+									{% endif %}
 
 									<!-- Hamburger -->
 
@@ -399,7 +411,7 @@
 								<!-- Footer Contact Item -->
 								<div class="col-xl-4 footer_contact_col">
 									<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-										<div class="footer_contact_icon"><img src="{% static 'images/around.svg' %}" alt=""></div>
+										<div class="footer_contact_icon"><img src="{% static 'images/around.svg' %}"></div>
 										<div class="footer_contact_title">send us a message</div>
 										<div class="footer_contact_list">
 											<ul>
