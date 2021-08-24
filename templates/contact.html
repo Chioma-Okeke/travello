@@ -123,7 +123,8 @@
 							<div class="home_search_container">
 								<div class="home_search_title">Search for your trip</div>
 								<div class="home_search_content">
-									<form action="#" class="home_search_form" id="home_search_form">
+									<form method="POST" class="home_search_form" id="home_search_form">
+										{% csrf_token %}
 										<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
 											<input type="text" class="search_input search_input_1" placeholder="City" required="required">
 											<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">
@@ -174,7 +175,8 @@
 						<!-- Contact Form -->
 						<div class="col-lg-6">
 							<div class="contact_form_container">
-								<form action="#" id="contact_form" class="contact_form">
+								<form method="POST" id="contact_form" class="contact_form">
+									{% csrf_token %}
 									<div style="margin-bottom: 18px"><input type="text" class="contact_input contact_input_name inpt" placeholder="Your Name" required="required"><div class="input_border"></div></div>
 									<div class="row">
 										<div class="col-lg-6" style="margin-bottom: 18px">
