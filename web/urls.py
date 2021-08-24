@@ -6,7 +6,7 @@ urlpatterns = [
     path('', home, name='home'),
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
-    path('news/', news, name='news')
+    path('news/', news, name='news'),
     path('authentication/', include('authentication.urls'))
 
 ]
