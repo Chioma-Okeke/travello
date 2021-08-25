@@ -1,14 +1,35 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
-from .forms import LoginForm
+from .forms import LoginForm, RegistrationForm
 
 
 
-# def RegisterPage(request):
-# 	form = UserCreationForm()
-# 	context = {'form':form}
-# 	return render(request, '', context)
+
+
+
+# Create your views here.
+def registration_view(request):
+    user = request.user
+    if user.is_authenticated:
+        return redirect('home')
+    
+    context={}
+    if request.POST:
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            account = authenticate(username=username, password=raw_password)
+            login(request, account)
+            return redirect('home')
+        else:
+            context['registration_form'] = form
+    else:
+        form = RegistrationForm()
+        context['registration_form'] = form
+    return render(request, 'authentication/signup.html', context)
 
 
 def user_login(request):
@@ -28,6 +49,9 @@ def user_login(request):
 				return HttpResponse('Invalid login')
 		else:
 			form = LoginForm()
+
 			
 	context['form'] = form
 	return render(request, '', context)
+
+		return render(request, 'authentication/signin.html', {'form': form})

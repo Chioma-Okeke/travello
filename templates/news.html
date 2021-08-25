@@ -50,7 +50,7 @@
 									{% if user.is_authenticated %}
 									<div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
 									{% else %}
-									<div class="header_phone ml-auto"><a href="#" class="home_search_button" style="
+									<div class="header_phone ml-auto"><a href="{% url 'signup' %}" class="home_search_button" style="
 										padding-top: 10px;
 										padding-bottom: 10px;
 										padding-left: 30px;
