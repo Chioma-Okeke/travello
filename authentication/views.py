@@ -52,6 +52,5 @@ def user_login(request):
 
 			
 	context['form'] = form
-	return render(request, '', context)
-
-		return render(request, 'authentication/signin.html', {'form': form})
+	return render(request, 'authentication/signin.html', {'form': form})
+		
